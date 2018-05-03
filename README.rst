@@ -2,7 +2,7 @@
 README
 *************************
 
-The WorkspaceLogger is a simple python and bash script to log and analyze which workspaces ("viewports" in unity) you are using in Ubuntu 16.04 (see `<DISCLAIMER.rst>_`).
+The WorkspaceLogger is a simple python and bash script to log and analyze which workspaces ("viewports" in unity) you are using in Ubuntu 16.04 (see `<DISCLAIMER.rst>`_).
 If you dedicate each workspace to a specific type of task, you may then analyze how much time is spent on these tasks.
 You may also automate reminders and messages for taking breaks or projects that are collecting dust.
 Note: healthy workstation guidelines suggest that you two 2-3 30- to 60-second breaks each hour to allow your body to recover from periods of repetitive stress.
@@ -27,18 +27,6 @@ Open labels.txt and assign labels for your workspace for a given numerical code 
 Workspaces are numbered from left to right and top to bottom, starting with 0.
 These labels are the ones that will show up with your analysis, and they can be changed at any time.
 
-Add more workspaces
-########################
-
-You can add more workspaces to unity as follows:
-
-.. code-block:: bash
-
-    sudo apt install compizconfig-settings-manager
-    ccsm
-
-Navigate to General Options -> Desktop Size tab
-
 Notify and other options
 ############################
 
@@ -52,7 +40,21 @@ https://wiki.ubuntu.com/Mutt
 
 To disable the notifications, use `python update.py --disable_notify` in your crontab.
 
+To add your email address, use `python update.py --email_address "user@host.com"` in your crontab.
+
 For more options, use `python update.py --help`.
+
+Add more workspaces
+########################
+
+You can add more workspaces to unity as follows:
+
+.. code-block:: bash
+
+    sudo apt install compizconfig-settings-manager
+    ccsm
+
+Navigate to General Options -> Desktop Size tab
 
 External contribution
 ###########################################
