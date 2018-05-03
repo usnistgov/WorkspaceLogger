@@ -24,7 +24,7 @@ parser.add_argument("--break_label", "-b", help="label for break", type=str, def
 parser.add_argument("--disable_notify", "-d", help="disable notifications", action='store_true',
                     default=False)
 parser.add_argument("--email_address", "-e", help="email address for notifications", type=str,
-                    default="harold.hatch@nist.gov")
+                    default="user@host.com")
 args = parser.parse_args()
 
 # read the day and break info from the stat file
