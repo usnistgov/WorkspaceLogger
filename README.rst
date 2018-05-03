@@ -12,7 +12,7 @@ The scripts are meant to be run every minute by crontab, and saved periodically 
 Installation
 ##############
 
-#. Enable workspaces: Display -> Behavior -> Enable workspaces
+#. Enable workspaces: Appearance -> Behavior -> Enable workspaces
 
 #. Install X Window manager
 
