@@ -5,14 +5,14 @@ README
 The WorkspaceLogger is a simple python and bash script to log and analyze which workspaces ("viewports" in unity) you are using in Ubuntu 16.04 (see `<DISCLAIMER.rst>`_).
 If you dedicate each workspace to a specific type of task, you may then analyze how much time is spent on these tasks.
 You may also automate reminders and messages for taking breaks or projects that are collecting dust.
-Note: healthy workstation guidelines suggest that you two 2-3 30- to 60-second breaks each hour to allow your body to recover from periods of repetitive stress.
+Note: healthy workstation guidelines suggest that you take two to three 30- to 60-second breaks each hour to allow your body to recover from periods of repetitive stress.
 This notification feature, and the analysis, is made possible if you reserve one workspace which you make active just before you stop using the workstation.
 The scripts are meant to be run every minute by crontab, and saved periodically for analysis.
 
 Installation
 ##############
 
-#. Enable workspaces: Displace -> Behavior -> Enable workspaces
+#. Enable workspaces: Display -> Behavior -> Enable workspaces
 
 #. Install X Window manager
 
@@ -33,7 +33,7 @@ Installation
 Update workspace labels
 ########################
 
-Open labels.txt and assign labels for your workspace for a given numerical code for the workspace.
+Open `<labels.txt>`_ and assign labels for your workspace for a given numerical code for the workspace.
 Workspaces are numbered from left to right and top to bottom, starting with 0.
 These labels are the ones that will show up with your analysis, and they can be changed at any time.
 
