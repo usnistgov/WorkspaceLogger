@@ -1,0 +1,2 @@
+# workspace logger
+* * * * * bash -l $HOME/WorkspaceLogger/update.sh 2>&1
