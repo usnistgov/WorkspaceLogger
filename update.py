@@ -93,6 +93,7 @@ with open(args.timeseries_file, 'a') as log:
         print(str(WORKSPACE) + ", unlabeled", file=log)
     if DFLABELS["label"][WORKSPACE] == args.break_label:
         stat_data['minutes_since_break'] = 0
+        stat_data['break_notified'] = 0
 
 # notify by email if user should take a break
 if stat_data['minutes_since_break'] >= args.minutes_per_break and not args.disable_notify:
@@ -103,8 +104,6 @@ if stat_data['minutes_since_break'] >= args.minutes_per_break and not args.disab
                        body='Take a >30 second break. Its been over ' +
                        str(args.minutes_per_break) + ' minutes. --WorkspaceLogger')
         stat_data['break_notified'] = 1
-    else:
-        stat_data['break_notified'] = 0
 
 # print a new stat file
 stat_data['day'] = datetime.datetime.now().day
