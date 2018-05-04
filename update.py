@@ -69,7 +69,7 @@ if stat_data['day'] != datetime.datetime.now().day:
     timeseries = pd.read_csv(args.timeseries_file, header=None)
     import my_parse
     timeseries = my_parse.endpoints(dataframe=timeseries, break_label=args.break_label, column=1)
-    if timeseries:
+    if not timeseries.empty:
         import my_plot
         my_plot.plot_timeseries(timeseries=timeseries,
                                 labels_file=args.labels_file)
