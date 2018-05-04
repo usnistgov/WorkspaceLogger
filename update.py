@@ -47,6 +47,7 @@ def summary(timeseries, summary_file):
     try:
         if isinstance(timeseries, str):
             timeseries = pd.read_csv(timeseries, header=None)
+            import my_parse
             timeseries = my_parse.endpoints(dataframe=timeseries, break_label=args.break_label,
                                             column=1)
         with open(summary_file, 'a') as smmry:
