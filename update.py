@@ -58,7 +58,7 @@ def summary(timeseries, summary_file):
                       str(stat_data['day']) + "," +
                       str(stat_data['year']) + "," +
                       str(label) + "," + str(num), file=smmry)
-        open(args.timeseries_file, 'w').close()
+            open(args.timeseries_file, 'w').close()
     except FileNotFoundError:
         i = 0 # do nothing
     except:
