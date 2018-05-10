@@ -27,6 +27,10 @@ parser.add_argument("--email_address", "-e", help="email address for notificatio
                     default="user@host.com")
 args = parser.parse_args()
 
+def file_len(fname):
+    '''https://stackoverflow.com/questions/845058/how-to-get-line-count-cheaply-in-python'''
+    return sum(1 for line in open(fname))
+
 # read the day and break info from the stat file
 try:
     stat = open(args.status_file, 'r')
@@ -67,33 +71,35 @@ def summary(timeseries, summary_file):
 
 # check if the day has changed
 if stat_data['day'] != datetime.datetime.now().day:
-    timeseries = pd.read_csv(args.timeseries_file, header=None)
-    import my_parse
-    timeseries = my_parse.endpoints(dataframe=timeseries, break_label=args.break_label, column=1)
-    if not timeseries.empty:
-        import my_plot
-        my_plot.plot_timeseries(timeseries=timeseries,
-                                labels_file=args.labels_file)
-        if not args.disable_notify:
-            import my_email
-            my_email.email(subject="WorkspaceLogger",
-                           address=args.email_address,
-                           body='WorkspaceLogger',
-                           attachment='plot.png')
-        summary(timeseries=timeseries,
-                summary_file=args.summary_file)
+    if file_len(args.timeseries_file) > 0:
+        timeseries = pd.read_csv(args.timeseries_file, header=None)
+        import my_parse
+        timeseries = my_parse.endpoints(dataframe=timeseries, break_label=args.break_label, column=1)
+        if not timeseries.empty:
+            import my_plot
+            my_plot.plot_timeseries(timeseries=timeseries,
+                                    labels_file=args.labels_file)
+            if not args.disable_notify:
+                import my_email
+                my_email.email(subject="WorkspaceLogger",
+                               address=args.email_address,
+                               body='WorkspaceLogger',
+                               attachment='plot.png')
+            summary(timeseries=timeseries,
+                    summary_file=args.summary_file)
 
 # read labels and append line to time series
 DFLABELS = pd.read_csv(args.labels_file)
 WORKSPACE = viewport.current()
 with open(args.timeseries_file, 'a') as log:
-    if WORKSPACE < len(DFLABELS):
-        print(str(WORKSPACE) + "," + str(DFLABELS["label"][WORKSPACE]), file=log)
-    else:
-        print(str(WORKSPACE) + ", unlabeled", file=log)
-    if DFLABELS["label"][WORKSPACE] == args.break_label:
-        stat_data['minutes_since_break'] = 0
-        stat_data['break_notified'] = 0
+    if file_len(args.timeseries_file) < 5*24*60: # less than 5 days
+        if WORKSPACE < len(DFLABELS):
+            print(str(WORKSPACE) + "," + str(DFLABELS["label"][WORKSPACE]), file=log)
+        else:
+            print(str(WORKSPACE) + ", unlabeled", file=log)
+        if DFLABELS["label"][WORKSPACE] == args.break_label:
+            stat_data['minutes_since_break'] = 0
+            stat_data['break_notified'] = 0
 
 # notify by email if user should take a break
 if stat_data['minutes_since_break'] >= args.minutes_per_break and not args.disable_notify:
