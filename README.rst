@@ -38,12 +38,12 @@ Installation
 
    crontab -e
 
-#. If all goes well, you should see timeseries.txt updating every minute. And the file summary.txt will populate everyday, with an email notification and attached plot.png histogram. You may also receive notifications if you are not taking breaks. Use the mail command to check for errors if the logger does not appear to be working.
+#. If all goes well, you should see timeseries.txt updating every minute. And the file summary.txt will populate at midnight everyday, with an email notification and attached plot.png histogram. You may also receive notifications if you are not taking breaks. Use the mail command to check for errors if the logger does not appear to be working.
 
 Update workspace labels
 ########################
 
-Open `<labels.txt>`_ and assign labels for your workspace for a given numerical code for the workspace.
+Using `<labels.txt.example>`_ as a template, create a file `labels.txt` and assign labels for your workspace for a given numerical code for the workspace.
 Workspaces are numbered from left to right and top to bottom, starting with 0.
 These labels are the ones that will show up with your analysis, and they can be changed at any time.
 
