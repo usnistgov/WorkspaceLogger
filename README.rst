@@ -2,7 +2,7 @@
 README
 *************************
 
-The WorkspaceLogger is a simple python and bash script to log and analyze which workspaces ("viewports" in unity) you are using in Ubuntu 16.04 (see `<DISCLAIMER.rst>`_).
+The WorkspaceLogger is a simple python script to log and analyze which workspaces ("viewports" in unity) you are using in Ubuntu 16.04 (see `<DISCLAIMER.rst>`_).
 If you dedicate each workspace to a specific type of task, you may then analyze how much time is spent on these tasks.
 You may also automate reminders and messages for taking breaks or projects that are collecting dust.
 Note: healthy workstation guidelines suggest that you take two to three 30- to 60-second breaks each hour to allow your body to recover from periods of repetitive stress.
