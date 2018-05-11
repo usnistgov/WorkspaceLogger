@@ -24,13 +24,13 @@ Installation
 
 #. `Update workspace labels`_. If you would like more than 4 (default), `Add more workspaces`_.
 
-#. Add to crontab as shown in `<crontab.example>`_ with customized `Notify`_.
+#. Create your custom logger.json (as shown in `<logger.json.example>`) and customize `Notifications`_.
+
+#. Add to crontab as shown in `<crontab.example>`_.
 
 .. code-block:: bash
 
    crontab -e
-
-#. Optionally, customize `<logger.json>`_
 
 Update workspace labels
 ########################
@@ -51,7 +51,7 @@ You can add more workspaces to unity as follows:
 
 Navigate to General Options -> Desktop Size tab
 
-Notify
+Notifications
 ############################
 
 This script uses the linux command line program "mutt" to send email notifications.
