@@ -191,3 +191,13 @@ class Logger(object):
         total_minutes = grp["minutes"].sum()
         available = (target_percentage*total_minutes - target_minutes)/(1. - target_percentage)
         return available
+
+
+    def print_status(self):
+        targets = self._data["target_percentage"]
+        for target in targets:
+            print(target)
+            label = target["label"]
+            print(label,
+                  self.time_to_reach_target(target_label=label,
+                                            target_percentage=target["percent"]))

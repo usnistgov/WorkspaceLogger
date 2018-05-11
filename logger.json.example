@@ -5,7 +5,7 @@
     "minutes_per_break": 30,
     "disable_notify": 0,
     "email_address": "put_your@email.here",
-    "workspace_labels" : [
+    "workspace_labels": [
         "Out",
         "EmailCalendar",
         "Proj1",
@@ -15,5 +15,9 @@
         "Proj5",
         "Proj6",
         "Proj7"
-    ]
+    ],
+    "target_percentage": {
+        "workspace": "Proj1",
+        "percent": 0.1
+    }
 }
