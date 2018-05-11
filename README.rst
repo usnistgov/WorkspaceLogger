@@ -26,11 +26,19 @@ Installation
 
 #. Create your custom logger.json (as shown in `<logger.json.example>`) and customize `Notifications`_.
 
+#. Test that the python script runs by the command below. A timeseries.txt file should have been created with your current workspace.
+
+.. code-block:: bash
+
+    ./update.sh
+
 #. Add to crontab as shown in `<crontab.example>`_.
 
 .. code-block:: bash
 
    crontab -e
+
+#. If all goes well, you should see timeseries.txt updating every minute. And the file summary.txt will populate everyday, with an email notification and attached plot.png histogram. You may also receive notifications if you are not taking breaks. Use the mail command to check for errors if the logger does not appear to be working.
 
 Update workspace labels
 ########################
