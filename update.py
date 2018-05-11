@@ -9,6 +9,7 @@ import json
 import datetime
 import pandas as pd
 import viewport
+import utils
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--timeseries_file", "-l", help="log file name", type=str,
@@ -41,8 +42,7 @@ except FileNotFoundError:
     stat_data['day'] = datetime.datetime.now().day
     stat_data['month'] = datetime.datetime.now().month
     stat_data['year'] = datetime.datetime.now().year
-    stat_data['minutes_since_break'] = 0
-    stat_data['break_notified'] = 0
+    stat_data = utils.reset_break(stat_data)
 except:
     raise
 stat_data['minutes_since_break'] += 1
@@ -101,8 +101,7 @@ with open(args.timeseries_file, 'a') as log:
         else:
             print(str(WORKSPACE) + ", unlabeled", file=log)
         if DFLABELS["label"][WORKSPACE] == args.break_label:
-            stat_data['minutes_since_break'] = 0
-            stat_data['break_notified'] = 0
+            stat_data = utils.reset_break(stat_data)
 
 # notify by email if user should take a break
 if stat_data['minutes_since_break'] >= args.minutes_per_break and not args.disable_notify:
