@@ -29,3 +29,23 @@ def plot_timeseries(timeseries, labels_file):
 
     plt.tight_layout()
     plt.savefig("plot.png", bbox_inches="tight")
+
+def autolabel(rects):
+    """
+    Attach a text label above each bar displaying its height
+    https://matplotlib.org/examples/api/barchart_demo.html
+		"""
+    for rect in rects:
+        height = rect.get_height()
+        plt.gca().text(rect.get_x() + rect.get_width()/2., 1.05*height,
+                '%d' % int(height),
+                ha='center', va='bottom')
+
+def summary(summary_file="summary.txt"):
+		summary = pd.read_csv(summary_file)
+		grp = summary.groupby("label").sum()
+		grp_perc = grp["minutes"]/grp["minutes"].sum()*100
+		rects1 = plt.bar(grp_perc.index, grp_perc)
+		plt.ylabel("percentage time", fontsize=16)
+		autolabel(rects1)
+		plt.show()
