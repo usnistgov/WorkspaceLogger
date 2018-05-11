@@ -24,11 +24,13 @@ Installation
 
 #. `Update workspace labels`_. If you would like more than 4 (default), `Add more workspaces`_.
 
-#. Add to crontab as shown in `<crontab.example>`_ with customized `Notify and other options`_.
+#. Add to crontab as shown in `<crontab.example>`_ with customized `Notify`_.
 
 .. code-block:: bash
 
    crontab -e
+
+#. Optionally, customize `<logger.json>`_
 
 Update workspace labels
 ########################
@@ -36,23 +38,6 @@ Update workspace labels
 Open `<labels.txt>`_ and assign labels for your workspace for a given numerical code for the workspace.
 Workspaces are numbered from left to right and top to bottom, starting with 0.
 These labels are the ones that will show up with your analysis, and they can be changed at any time.
-
-Notify and other options
-############################
-
-This script uses the linux command line program "mutt" to send email notifications.
-
-.. code-block::
-
-   sudo apt install mutt
-
-https://wiki.ubuntu.com/Mutt
-
-To disable the notifications, use `python update.py --disable_notify` in your crontab.
-
-To add your email address, use `python update.py --email_address "user@host.com"` in your crontab.
-
-For more options, use `python update.py --help`.
 
 Add more workspaces
 ########################
@@ -65,6 +50,31 @@ You can add more workspaces to unity as follows:
     ccsm
 
 Navigate to General Options -> Desktop Size tab
+
+Notify
+############################
+
+This script uses the linux command line program "mutt" to send email notifications.
+
+.. code-block::
+
+   sudo apt install mutt
+
+https://wiki.ubuntu.com/Mutt
+
+To disable the notifications, change "disable_notify" from 0 to 1 in `<logger.json>`_.
+
+To add your email address, update "email_address" in `<logger.json>`_.
+
+To change the number of minutes until notification, update "minutes_per_break" in `<logger.json>`_.
+
+To change the workspace label which corresponds to taking a break, update "break_label" in `<logger.json>`_.
+
+To reset the break notification:
+
+.. code-block:: bash
+
+    python /path/to/WorkspaceLogger/reset_break.py
 
 External contribution
 ###########################################

@@ -1,0 +1,9 @@
+{
+    "timeseries_file": "timeseries.txt",
+    "summary_file": "summary.txt",
+    "labels_file": "labels.txt",
+    "break_label": "Out",
+    "minutes_per_break": 30,
+    "disable_notify": 0,
+    "email_address": "put_your@email.here"
+}
