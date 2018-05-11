@@ -31,6 +31,7 @@ def file_len(fname):
     '''https://stackoverflow.com/questions/845058/how-to-get-line-count-cheaply-in-python'''
     return sum(1 for line in open(fname))
 
+# update the stat file
 # read the day and break info from the stat file
 try:
     stat = open(args.status_file, 'r')
@@ -45,6 +46,8 @@ except FileNotFoundError:
 except:
     raise
 stat_data['minutes_since_break'] += 1
+# update the arguments for the stat file
+stat_data["summary_file"] = args.summary_file
 
 def summary(timeseries, summary_file):
     """summarize the timeseries and then start over"""
