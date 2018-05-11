@@ -22,9 +22,7 @@ Installation
 
 #. Update the path to python in `<update.sh>`_.
 
-#. `Update workspace labels`_. If you would like more than 4 (default), `Add more workspaces`_.
-
-#. Create your custom logger.json (as shown in `<logger.json.example>`) and customize `Notifications`_.
+#. Create your custom `logger.json`_ (as shown in `<logger.json.example>`) and customize `Notifications`_. If you would like more than 4 workspaces (default), `Add more workspaces`_.
 
 #. Test that the python script runs by the command below. A timeseries.txt file should have been created with your current workspace.
 
@@ -40,12 +38,6 @@ Installation
 
 #. If all goes well, you should see timeseries.txt updating every minute. And the file summary.txt will populate at midnight everyday, with an email notification and attached plot.png histogram. You may also receive notifications if you are not taking breaks. Use the mail command to check for errors if the logger does not appear to be working.
 
-Update workspace labels
-########################
-
-Using `<labels.txt.example>`_ as a template, create a file `labels.txt` and assign labels for your workspace for a given numerical code for the workspace.
-Workspaces are numbered from left to right and top to bottom, starting with 0.
-These labels are the ones that will show up with your analysis, and they can be changed at any time.
 
 Add more workspaces
 ########################

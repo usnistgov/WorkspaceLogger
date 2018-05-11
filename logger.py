@@ -89,16 +89,15 @@ class Logger(object):
            Arguments:
              timeseries: pandas dataframe
         '''
-        dflabels = pd.read_csv(self._data['labels_file'])
-        num_labels = len(dflabels)
+        num_labels = len(self._data["workspace_labels"])
         plt.subplots(1, 2, figsize=(7, 3))
         plt.subplot(1, 2, 1)
         plt.scatter(timeseries.index, timeseries[0])
-        plt.yticks(np.arange(0, num_labels, 1.0), dflabels["label"])
+        plt.yticks(np.arange(0, num_labels, 1.0), self._data["workspace_labels"])
         plt.xlabel("minute")
         plt.subplot(1, 2, 2)
         plt.hist(timeseries[0], bins=np.arange(num_labels)-0.5, orientation='horizontal')
-        plt.yticks(np.arange(0, num_labels, 1.0), dflabels["label"])
+        plt.yticks(np.arange(0, num_labels, 1.0), self._data["workspace_labels"])
         plt.xlabel("minutes")
         plt.tight_layout()
         plt.savefig("plot.png", bbox_inches="tight")
@@ -147,16 +146,16 @@ class Logger(object):
         self.print_summary(timeseries=timeseries)
 
     def update_timeseries(self):
-        dflabels = pd.read_csv(self._data['labels_file'])
+        dflabels = self._data["workspace_labels"]
         workspace = viewport.current()
         with open(self._data['timeseries_file'], 'a') as log:
             if file_len(self._data['timeseries_file']) > 5*24*60:
                 return
             if workspace < len(dflabels):
-                print(str(workspace) + "," + str(dflabels["label"][workspace]), file=log)
+                print(str(workspace) + "," + str(dflabels[workspace]), file=log)
             else:
                 print(str(workspace) + ", unlabeled", file=log)
-            if dflabels["label"][workspace] == self._data['break_label']:
+            if dflabels[workspace] == self._data['break_label']:
                 self.reset_break()
 
     def update_break_notification(self):
@@ -191,7 +190,4 @@ class Logger(object):
             target_minutes = grp["minutes"][target_label]
         total_minutes = grp["minutes"].sum()
         available = (target_percentage*total_minutes - target_minutes)/(1. - target_percentage)
-        print("Available time to spend on", target_label, "to reach target of",
-              int(target_percentage*100), "%:\n", round(available/60., 1),
-              "hours,", round(available/60/8, 1), "days, or",
-              round(available/60/8/5, 1), "weeks")
+        return available

@@ -10,5 +10,9 @@ args = parser.parse_args()
 
 import logger
 log = logger.Logger()
-log.time_to_reach_target(target_label=args.target_label,
-                         target_percentage=args.target_percentage)
+available = log.time_to_reach_target(target_label=args.target_label,
+                                     target_percentage=args.target_percentage)
+print("Available time to spend on", args.target_label, "to reach target of",
+      int(args.target_percentage*100), "%:\n", round(available/60., 1),
+      "hours,", round(available/60/8, 1), "days, or",
+      round(available/60/8/5, 1), "weeks")
