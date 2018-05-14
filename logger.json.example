@@ -16,8 +16,10 @@
         "Proj6",
         "Proj7"
     ],
-    "target_percentage": {
-        "workspace": "Proj1",
-        "percent": 0.1
-    }
+    "target_percentage": [
+        {
+            "label": "Proj1",
+            "percent": 0.1
+        }
+    ]
 }

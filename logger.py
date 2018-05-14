@@ -194,10 +194,14 @@ class Logger(object):
 
 
     def print_status(self):
-        targets = self._data["target_percentage"]
-        for target in targets:
-            print(target)
+        '''
+        Print the status, used continuously by status.py.
+        '''
+        print(self._data['minutes_since_break'], "minutes since break.")
+        print("\nDays to reach target percentages:")
+        for target in self._data["target_percentage"]:
             label = target["label"]
-            print(label,
-                  self.time_to_reach_target(target_label=label,
-                                            target_percentage=target["percent"]))
+            available = self.time_to_reach_target(
+                target_label=label,
+                target_percentage=target["percent"])
+            print(label + ":", round(available/60/8, 1))
