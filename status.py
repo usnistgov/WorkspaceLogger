@@ -1,7 +1,7 @@
 import time
 import logger
-log = logger.Logger()
 while True:
+    log = logger.Logger()
     log.print_status()
     time.sleep(60.0)
     print("****************************************************")
