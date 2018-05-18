@@ -22,7 +22,7 @@ Installation
 
 #. Update the path to python in `<update.sh>`_.
 
-#. Create your custom `logger.json`_ (as shown in `<logger.json.example>`) and customize `Notifications`_. If you would like more than 4 workspaces (default), `Add more workspaces`_.
+#. Create your custom logger.json (as shown in `<logger.json.example>`_) and customize `Notifications`_. If you would like more than 4 workspaces (default), `Add more workspaces`_.
 
 #. Test that the python script runs by the command below. A timeseries.txt file should have been created with your current workspace.
 

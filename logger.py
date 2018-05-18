@@ -96,9 +96,10 @@ class Logger(object):
         plt.yticks(np.arange(0, num_labels, 1.0), self._data["workspace_labels"])
         plt.xlabel("minute")
         plt.subplot(1, 2, 2)
-        plt.hist(timeseries[0], bins=np.arange(num_labels)-0.5, orientation='horizontal')
+        plt.hist(timeseries[0], bins=np.arange(num_labels)+0.5, orientation='horizontal')
         plt.yticks(np.arange(0, num_labels, 1.0), self._data["workspace_labels"])
         plt.xlabel("minutes")
+        plt.ylim([0.5, num_labels-0.5])
         plt.tight_layout()
         plt.savefig("plot.png", bbox_inches="tight")
 
